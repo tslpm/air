@@ -55,13 +55,19 @@
           <ul class="nav pull-right">
             <li><a href="/airports.html">Cities</a></li>
             <li><a href="/support.html">Customer Support</a></li>
-            <li><a href="/profile.html">My Profile</a></li>
-            <li><a href="#about">Logout</a></li>
+            <% if session[:username] %>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/profile.html">My Profile</a></li>
+            <% else -%>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/users/new">Sign up</a></li>
+            <% end -%>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
+  <%= notice %>
   <div class="container">
     <%= yield %>
 
