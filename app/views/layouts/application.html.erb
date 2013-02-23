@@ -55,9 +55,10 @@
           <ul class="nav pull-right">
             <li><a href="/airports.html">Cities</a></li>
             <li><a href="/support.html">Customer Support</a></li>
-            <% if session[:username] %>
+            <% if session[:user_id] %>
               <li><a href="/logout">Logout</a></li>
-              <li><a href="/profile.html">My Profile</a></li>
+              <li><%= link_to "My Profile", user_url(session[:user_id]) %></li>
+
             <% else -%>
               <li><a href="/login">Login</a></li>
               <li><a href="/users/new">Sign up</a></li>
