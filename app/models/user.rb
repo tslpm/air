@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
 
   has_many :reservations
+  has_many :flights, through: :reservations
 
   has_secure_password
 
