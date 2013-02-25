@@ -1,15 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+  <div class="span12">
+    <h1 class="page-header">My Profile</h1>
+    <h2>Total Miles Earned: 0</h2>
+    <h2>Reservations</h2>
+    <ul>
+      <% @user.reservations.each do |reservation| %>
+      <li><%= link_to "Flight ##{reservation.flight.number} #{reservation.departs_on} #{reservation.flight.departure_airport}-#{reservation.flight.arrival_airport} #{reservation.flight.departs_at.strftime("%l:%M %p")} - #{reservation.flight.arrives_at.strftime("%l:%M %p")}", reservation_url(reservation) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
