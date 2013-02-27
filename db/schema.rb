@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225202337) do
+ActiveRecord::Schema.define(:version => 20130227222100) do
 
   create_table "flights", :force => true do |t|
     t.string   "number"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130225202337) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.integer  "miles",           :default => 0
+    t.string   "email"
   end
 
 end
