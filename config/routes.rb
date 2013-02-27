@@ -2,6 +2,8 @@ OneWayAir::Application.routes.draw do
 
   resources :reservations
 
+  get '/flights' => 'flights#index'
+
   post '/reservations', controller: 'reservations', action: 'create'
 
   # def dispatch()
