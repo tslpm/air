@@ -10,17 +10,18 @@ class FlightsController < ApplicationController
     else
       @flights = Flight.order('number asc')
     end
-    @flights = @flights.limit(500)
 
-    if params[:page].present?
-      offset_number = (params[:page].to_i - 1) * 10
-      @flights = @flights.offset(offset_number)
+    if params[:page].nil?
+      @page = 1
+    else
+      @page = params[:page].to_i
     end
-
+    offset_number = (@page - 1) * 10
+    @flights = @flights.offset(offset_number)
     @flights = @flights.limit(10)
-
     @num_pages = (Flight.count / 10.0).ceil
-
+    @prev = @page - 1
+    @next = @page + 1
   end
 
 end

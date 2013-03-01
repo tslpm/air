@@ -5,11 +5,17 @@
       <div class="span12">
         <h1 class="page-header">Today's Flight Schedule</h1>
 
-        <%= link_to "Previous", "#" %>
+        <% if @page != 1 %>
+          <%= link_to "Previous", flights_url(:page => @prev) %>
+        <% end %>
+
         <% 1.upto(@num_pages) do |i| %>
           <%= link_to "#{i}", flights_url(:page => i) %>
         <% end %>
-        <%= link_to "Next", "#" %>
+
+        <% if @page != @num_pages %>
+          <%= link_to "Next", flights_url(:page => @next) %>
+        <% end %>
 
         <table class="table table-hover">
           <thead>
