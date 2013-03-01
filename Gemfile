@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate', '~> 3.0'
+
 gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
