@@ -3,6 +3,9 @@ class Flight < ActiveRecord::Base
 
   before_create :calculates_miles
 
+  belongs_to :departure_airport, :class_name => 'Airport'
+  belongs_to :arrival_airport, :class_name => 'Airport'
+
   MILEAGE_CHART = [
             ['ORD', 'JFK', 740],
             ['ORD', 'LAX', 1744],
@@ -14,10 +17,10 @@ class Flight < ActiveRecord::Base
 
   def calculates_miles
     e = MILEAGE_CHART.detect do |entry|
-      (entry.first == self.departure_airport &&
-            entry.second == self.arrival_airport) ||
-      (entry.second == self.departure_airport &&
-            entry.first == self.arrival_airport)
+      (entry.first == self.departure_airport.code &&
+            entry.second == self.arrival_airport.code) ||
+      (entry.second == self.departure_airport.code &&
+            entry.first == self.arrival_airport.code)
     end
     self.miles = e.third
   end
